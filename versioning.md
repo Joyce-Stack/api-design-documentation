@@ -58,7 +58,7 @@ Hub teams can't be expected to wait for all clients to run all their test suites
 In the unfortunate event that a change breaks then the policy should be not to rollback. One ill behaved client cannot block the progress of any part of the API development cycle. We recommend that clients program defensively 
 
 
-**Approaches**
+## Approaches
 
 ### URI 
 
@@ -137,7 +137,7 @@ Similar to the two former methods but you specify it in the request header e.g. 
 * Who does it? 
 
 
-**Custom Header in timestamp format**
+###Custom Header in timestamp format
 
 Each Hub would indicate their version in a custom header such as 'Hub-Version' but as a timestamp, not a numeric value such as 1.0, 3.0. This approach is about versioning the entire hub and not the individual endpoints within each hub.  
 
@@ -160,7 +160,7 @@ Each Hub would indicate their version in a custom header such as 'Hub-Version' b
      *  GoGardless, Stripe and Azure 
 
 
-**Content Negotiation for the entire Hub** 
+### Content Negotiation for the entire Hub
 
  Each hub defines their own media types that would be used in the Accept header to request a specific resource in a specific format. A numeric value (eg v1)  or a timestamp could be used. For the purpose of this I will use timestamps 
 
@@ -204,7 +204,7 @@ versions the entire Hub API suite - a version bump means that all APIs in the Hu
  * Clients in the wild doing this: 
      * GitHub 
 
-**Content Negotiation for each of the resources**
+###Content Negotiation for each of the resources 
 
 Each hub will host several separate APIs. Each of these APIs will use content negotiation to determine the appropriate versions. to serve.  This is similar to the above approach but not at a hub level but at an API level. 
 
