@@ -137,7 +137,7 @@ Similar to the two former methods but you specify it in the request header e.g. 
 * Who does it? 
 
 
-###Custom Header in timestamp format
+### Custom Header in timestamp format
 
 Each Hub would indicate their version in a custom header such as 'Hub-Version' but as a timestamp, not a numeric value such as 1.0, 3.0. This approach is about versioning the entire hub and not the individual endpoints within each hub.  
 
