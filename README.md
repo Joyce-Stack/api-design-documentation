@@ -126,10 +126,10 @@ Its more important to have a working API with actual clients than achieving perf
 
 ### Applies to all resources
 
-####Authentication
+#### Authentication
 coming shortly  
 
-####Versioning 
+#### Versioning 
 (this needs further clarifications)
 
 **Golden Rule** 
