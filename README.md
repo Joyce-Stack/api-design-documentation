@@ -80,7 +80,8 @@ Reworked into these six RFCs:
 ## Guiding Principles  
  
 
-#### Support a wide range of clients 
+#### Support a wide range of clients
+ 
 * Network
 	* Same Amazon region as the API 
 	* Data centre with a fibre link 
@@ -164,7 +165,7 @@ Both client and servers are responsible for negotiation to be successful.
 		* e.g. Content-Type: application/vnd.mendeley-document.1+json 	
 	
 
-####Dates
+#### Dates
 
 ISO 8601 format **MUST** be used for all dates and times e.g. 2015-02-18T04:57:56Z
 
@@ -190,7 +191,7 @@ Collections of resources can be operated on using HTTP verbs.
 
 
 
-###Design considerations for URIs
+### Design considerations for URIs
 
 Here is the [URI](https://tools.ietf.org/html/rfc3986) specification. 
 
@@ -244,7 +245,7 @@ Can requests include a body? | No | Yes | Yes | No | Yes | Yes (but no defined u
 What could it be used for in a RESTful API? | Fetching a representation of the resource | Creating a new resource from a representation | Replacing a resource with a representation | Deleting a resource | Applying partial updates to a resource | CORS | Fetching only the headers (e.g. pagination counts) | Nothing - breaks layered system constraint | Nothing - breaks layered system constraint   
              
              
-#####Filtering 
+##### Filtering 
 
 All resources **SHOULD** provide a filtering mechanism where it is expected to return a large collections. 
 
@@ -272,7 +273,7 @@ The `view=full` might have all fields in the `dog` resource whereas the `view=sm
 #### Selecting subset of fields
 (Joyce to add )
 
-#####Filtering large collections
+##### Filtering large collections
 Some collections are too large to return in one response e.g. catalog, institutions or location information. 
 
 In such cases the default **SHOULD** default to returning a limited number of results or enforcing a CAP. What is the 'default' is specific to the resource in question e.g. most popular locations/institutions.
@@ -280,7 +281,7 @@ In such cases the default **SHOULD** default to returning a limited number of re
 Mandatory query parameters **MAY** also be used. 
               
              
-#####Pagination 
+##### Pagination 
 
 Large collection resources **MUST** have an upper bound on the number of items in the response. It is not desirable for either our servers or our clients for us to dump all the data in one go. 
 
@@ -297,10 +298,10 @@ If a client requires a mechanism to iterate over a collection of resources then 
 
 <code>limit</code> **MUST** be used to indicate the upper bounded value. 
 
-#####Time selection queries
+##### Time selection queries
 modified_since or deleted_since or {property_name}_since **SHOULD** be provided if time selection is needed. 
             
-#####Bulk requests
+##### Bulk requests
 Developers **SHOULD NOT** write bulk APIs. 
 
 e.g. <code>GET /dogs/id1,id2,id3,</code>         
@@ -316,7 +317,7 @@ e.g. <code>GET /dogs/id1,id2,id3,</code>
 
 ------
              
-###Create resource    
+### Create resource    
 Creates a new resource using the POST verb. The response to a POST **MUST** be `201 Created`, with a `Location header` containing the URL where the resource can be found. The body **MUST** contain a representation of the resources (including any server-generated fields). 
 
 *URI template*
@@ -380,7 +381,7 @@ Second Attempt works errors:
 This is just a draft and has not been updated in 10+ years but is a suggested pattern.        
          
          
-#####Linking/Unlinking resources together 
+##### Linking/Unlinking resources together 
 You **MAY** use LINK and UNLINK hypermedia links to indicate when one resource is linked/unlinked to another. 
   
 *Example request*   
@@ -404,7 +405,7 @@ You **MAY** use the UNLINK method to unlink one resource from another.
              
 Specified by [*this internet draft*](http://tools.ietf.org/html/draft-snell-link-method), but at the time of writing is not an approved RFC.              
              
-###Read a resource       
+### Read a resource       
 Reads a single resource using the GET verb from a collection of resources. 
 
 GET calls can be called multiple times without any side effects i.e. idempotent.
@@ -427,7 +428,7 @@ The response to a GET **MUST** be `200 OK`. The body **MUST** contain a represen
 	}
 
 
-###Update a resource 
+### Update a resource 
 Updates a single resource using the PATCH verb. Applies a partial update.  
 
 The response to a PATCH **MUST** be `200 OK`. The body **MUST** contain a representation of the resources including any updated server-generated fields. In the event the resource is not located then the HTTP status returned **MUST** be `404 Not Found`. If the patch is invalid then a `422 Unprocessable Entity` should be returned. 
@@ -449,7 +450,7 @@ Content-Type must be set to the resource's custom media type eg. application/vnd
   
 Beware of cases where `PATCH /resource1` can affect the state of `/resource2`.
 
-####Avoiding concurrent updates
+#### Avoiding concurrent updates
 Clients **MAY** use a precondition check of `If-Unmodified-Since` header on update requests. If specified, the resource in question will not be updated if there have been any other changes since the timestamp provided. Should be specified in [RFC 2822](http://www.rfc-base.org/txt/rfc-2822.txt) format e.g. Thu, 01 May 2014 10:07:28 GMT
 
 
@@ -458,7 +459,7 @@ It **MAY** be a requirement and the server can send back `428 Precondition Requi
 This **MAY** be used for GET requests e.g don’t download data that hasn’t changed since the client last requested it
 
 
-###Remove properties of a resource
+### Remove properties of a resource
 Removes properties of a single resource using the PATCH verb and a subset (remove operation) of [JSON PATCH](https://tools.ietf.org/html/rfc6902) semantics.
 
 Content-Type must be set to application/json-patch+json
@@ -475,7 +476,7 @@ The "remove" operation removes (sets to null) the value at the target location.
 The target location MUST exist for the operation to be successful.
 
 
-###Delete a resource 
+### Delete a resource 
 Deletes a single resource using the DELETE verb. The response to a DELETE **MUST** be `204 No Content`. In the event the resource is not located then the HTTP status returned **MUST** be `404 Not Found`. The action may be forbidden by a particular client so a HTTP status of `403 Forbidden` **MUST** be returned. 
 
 *URI template*
