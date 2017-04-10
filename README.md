@@ -357,7 +357,7 @@ GET response will usually have more fields, but that’s OK. There are some some
 -   extra metadata (e.g. the document that the file is attached to) goes in the headers as it’s the only place left
 
           
-#####Preventing duplicate creation of resources
+##### Preventing duplicate creation of resources
 
 Clients **MAY** using the [*post once exactly*](https://tools.ietf.org/html/draft-nottingham-http-poe-00) pattern to avoid duplicates being created. 
 
@@ -490,7 +490,7 @@ Deletes a single resource using the DELETE verb. The response to a DELETE **MUST
 	204 no content
 	
 	
-##Nesting Resources
+## Nesting Resources
 Sometimes it maybe necessary to nest resources because a sub resource can't exist without a parent resource. Developers are encouraged to think about if resources need to be nested and if they could be identified by a single ID. 
 
 URLS **MUST** not exceed two levels of nesting. 
@@ -518,7 +518,7 @@ Overhead on server developers who have to validate multiple IDs.
   	
 In this example we have no context what the IDs are identifying.  	
   	
-##Complex Operations (Actions)
+## Complex Operations (Actions)
 Some actions don’t naturally map to a HTTP verb. Verbs such as 'activate', 'cancel', 'validate', 'accept', 'reset', 'verify', and 'deny' are examples. These are usually a procedural concept. 
 
 
@@ -549,7 +549,7 @@ Developers are encouraged to consider resource design alternatives over using th
   	}
   	
   	
-###The 'import' action
+### The 'import' action
 Before considering making an `action` of an import action then consider: 
 
 * What resource are you importing? 
