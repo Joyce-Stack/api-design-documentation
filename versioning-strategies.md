@@ -204,7 +204,7 @@ versions the entire Hub API suite - a version bump means that all APIs in the Hu
  * Clients in the wild doing this: 
      * GitHub 
 
-###Content Negotiation for each of the resources 
+### Content Negotiation for each of the resources 
 
 Each hub will host several separate APIs. Each of these APIs will use content negotiation to determine the appropriate versions. to serve.  This is similar to the above approach but not at a hub level but at an API level. 
 
