@@ -86,7 +86,10 @@ Reworked into these six RFCs:
 	* Same Amazon region as the API 
 	* Data centre with a fibre link 
 	* Home internet connection 
-	* Mobile network* Device - differ in power and battery 
+	* Mobile network
+
+
+* Device - differ in power and battery 
 	* Servers
 	* PCs
 	* Mobile phones / tablets 
@@ -114,11 +117,21 @@ Reworked into these six RFCs:
 #### A tidy API is more important than tidy code 
 
 * There are more clients than API providers in an organisation so design an API that they want 
-	* this can lead to difficulties in implementing features but it will be worth it   		
-### Follow standards pragmatically 
-* Use standard HTTP, and industry best practices, where appropriate:	* avoids surprising client developers	* tried and tested	* better support in client-side libraries 
-	
-However, there may be times where:	* following the standard exactly would be excessively complicated	* there is no standard	* there are multiple competing standards, and vigorous debate about which one is right
+	* this can lead to difficulties in implementing features but it will be worth it   	
+	
+
+### Follow standards pragmatically 
+
+* Use standard HTTP, and industry best practices, where appropriate:
+	* avoids surprising client developers
+	* tried and tested
+	* better support in client-side libraries 
+
+	
+* However, there may be times where:
+	* following the standard exactly would be excessively complicated
+	* there is no standard
+	* there are multiple competing standards, and vigorous debate about which one is right
 
 Its more important to have a working API with actual clients than achieving perfect RESTful purity.
 
